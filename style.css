@@ -1,0 +1,123 @@
+:root{
+  --ink:#0e1114;        /* ასფალტი */
+  --panel:#151a1e;
+  --line:#262d33;
+  --bone:#ece8e0;       /* ფარის თეთრი */
+  --mute:#8b929a;
+  --mouse:#8e949a;      /* ნაცრისფერი ძარა */
+  --tail:#c4262e;       /* უკანა ფარი */
+  --serif:"Noto Serif Georgian",Georgia,serif;
+  --sans:"Noto Sans Georgian",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+.ph{position:relative;background:linear-gradient(135deg,#1b2025,#0e1114);overflow:hidden}
+.ph.missing::after{content:"ჩასვი ფოტო: " attr(data-file);position:absolute;inset:0;display:grid;place-items:center;color:var(--mute);font-size:.9rem;text-align:center;padding:1rem}
+
+/* ზედა ზოლი */
+nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:1rem clamp(1.25rem,5vw,4rem);transition:background .3s}
+nav.solid{background:rgba(14,17,20,.88);backdrop-filter:blur(8px)}
+nav b{font-family:var(--serif);font-weight:900;letter-spacing:.02em}
+nav div{display:flex;gap:1.6rem;font-size:.92rem}
+nav a{text-decoration:none;opacity:.8}
+nav a:hover{opacity:1}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--tail);width:0;z-index:6}
+
+/* HERO */
+.hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero .ph{position:absolute;inset:-6% 0;transform:scale(1.12);animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .ph img{object-position:50% 100%}
+@keyframes settle{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(14,17,20,.96) 0%,rgba(14,17,20,.15) 55%,rgba(14,17,20,.45) 100%)}
+.hero-text{position:relative;z-index:2;width:100%;padding:0 clamp(1.25rem,5vw,4rem) clamp(2rem,6vh,4rem);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(3.2rem,12vw,10rem);line-height:.9;letter-spacing:-.025em}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.8,.2,1) .5s forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.7s}
+@keyframes rise{to{transform:none}}
+.tag{max-width:30ch;opacity:0;animation:fade 1s ease 1.5s forwards}
+.tag small{display:block;color:var(--mute);font-size:.9rem}
+.tag strong{font-family:var(--serif);font-size:1.4rem;font-weight:700}
+.tag .bar{width:56px;height:4px;background:var(--tail);margin-bottom:1rem}
+@keyframes fade{to{opacity:1}}
+
+section{padding:clamp(4rem,10vw,8rem) clamp(1.25rem,5vw,4rem)}
+.wrap{max-width:1200px;margin:0 auto}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;margin-bottom:1.2rem}
+.lead{color:var(--mute);max-width:46ch;font-size:1.05rem}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* ოდომეტრი: მთავარი მომენტი */
+.odo{background:var(--panel);border-block:1px solid var(--line);text-align:center}
+.odo p{color:var(--mute);margin-bottom:1.5rem}
+.digits{display:inline-flex;gap:.35rem;font-family:var(--serif);font-weight:900;font-size:clamp(2.4rem,9vw,6.5rem);line-height:1}
+.dg{width:.62em;height:1.15em;overflow:hidden;background:#0a0c0e;border:1px solid var(--line);border-radius:6px}
+.dg ol{list-style:none;padding:0;margin:0;transition:transform 2.4s cubic-bezier(.15,.8,.1,1)}
+.dg li{height:1.15em;display:grid;place-items:center}
+.sep{width:.25em}
+.unit{align-self:flex-end;font-size:.28em;font-weight:400;color:var(--mute);margin-left:.6rem;padding-bottom:.3em}
+.odo .note{margin-top:1.6rem;font-size:.95rem}
+
+/* სპეციფიკაციები */
+.specs{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+dl{border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+dt{color:var(--mute)}
+dd{font-weight:600;text-align:right}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--mouse);margin-right:.5rem;vertical-align:-1px;border:1px solid #fff3}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.big div{border-left:3px solid var(--tail);padding-left:1rem}
+.big b{display:block;font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05}
+.big span{color:var(--mute);font-size:.9rem}
+
+/* ძრავების შედარება */
+.cmp{background:var(--panel);border-block:1px solid var(--line)}
+.bars{margin-top:2.5rem;display:grid;gap:1.4rem}
+.bar-row{display:grid;grid-template-columns:minmax(120px,200px) 1fr 80px;gap:1rem;align-items:center}
+.bar-row .t{height:14px;background:#0a0c0e;border-radius:7px;overflow:hidden}
+.bar-row .t i{display:block;height:100%;width:0;background:var(--mouse);border-radius:7px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.bar-row.mine .t i{background:var(--tail)}
+.bar-row.mine{font-weight:600}
+.bar-row b{text-align:right;font-family:var(--serif)}
+
+/* გალერეა */
+.gal-head{padding:clamp(4rem,10vw,7rem) clamp(1.25rem,5vw,4rem) 2rem}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.5rem,1.5vw,1rem);padding:0 clamp(.5rem,1.5vw,1rem) 4rem}
+.gallery .ph{cursor:zoom-in;border:0;padding:0;color:inherit;font:inherit;text-align:inherit}
+.gallery .wide{grid-column:span 2;aspect-ratio:3/2}
+.gallery .half{grid-column:span 1;aspect-ratio:3/4}
+.gallery .ph img{object-fit:contain;transition:filter .3s ease}
+.gallery .ph:hover img{filter:brightness(.9)}
+
+/* ლაითბოქსი */
+.lb{position:fixed;inset:0;background:rgba(7,9,11,.97);display:none;align-items:center;justify-content:center;z-index:20;padding:1rem}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:90vh;width:auto;height:auto;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:var(--bone);cursor:pointer;line-height:1;padding:.5rem 1rem;font-size:2.6rem}
+.lb .x{top:.6rem;right:.8rem}.lb .p{left:.4rem;top:50%}.lb .n{right:.4rem;top:50%}
+.lb .c{position:absolute;bottom:1rem;color:var(--mute);font-size:.9rem}
+button:focus-visible,.gallery .ph:focus-visible{outline:2px solid var(--tail);outline-offset:3px}
+
+footer{padding:3rem clamp(1.25rem,5vw,4rem);border-top:1px solid var(--line);color:var(--mute);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+@media(max-width:760px){
+  nav div{display:none}
+  .specs{grid-template-columns:1fr}
+  .big{grid-template-columns:1fr 1fr 1fr;gap:.8rem}
+  .gallery{grid-template-columns:1fr}
+  .gallery .half,.gallery .wide{grid-column:span 1}
+  .bar-row{grid-template-columns:1fr 60px}
+  .bar-row .t{grid-column:1/-1;order:3}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero .ph{animation:none;transform:none}
+  .hero h1 span i{animation:none;transform:none}
+  .tag{animation:none;opacity:1}
+  .reveal{opacity:1;transform:none;transition:none}
+  .dg ol,.bar-row .t i{transition:none}
+}
